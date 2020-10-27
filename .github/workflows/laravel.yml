@@ -21,7 +21,7 @@ jobs:
         path: vendor
         key: ${{ runner.os }}-vendor
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: composer update --prefer-dist --no-interaction --no-progress
     - name: Generate key
       run: php artisan key:generate
     - name: Directory Permissions
