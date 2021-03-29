@@ -9,11 +9,9 @@ on:
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -21,7 +19,6 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd, redis, memcached
           tools: composer:v2
           coverage: none
-          
       - name: Install dependencies
         uses: nick-invision/retry@v1
         with:
@@ -29,4 +26,4 @@ jobs:
           max_attempts: 5
           command: composer update --prefer-dist --no-interaction --no-progress
       - name: PHPUnit
-        uses: php-actions/phpunit@v2
+        run: vendor/bin/phpunit --verbose
